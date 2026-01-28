@@ -1,7 +1,7 @@
 ---
 author: AFTERGLOW HUB
-pubDatetime: 2026-01-28T10:00:00Z
-modDatetime: 2026-01-28T10:00:00Z
+pubDatetime: 2026-01-27T10:00:00Z
+modDatetime: 2026-01-27T10:00:00Z
 title: "【2026】Cocoonで今日中に会社HPを公開する：名刺代わりの“器”を最短で作る（第1回）"
 slug: "cocoon-business-site-01"
 featured: true
