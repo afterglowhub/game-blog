@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://blog.afterglowhub.com", // replace this with your deployed domain
   author: "Afterglow Hub",
   profile: "https://satnaing.dev/",
-  desc: "Lv.35↑ゲーマーズコミュニティAFTERGLOW HUB,
+  desc: "Lv.35↑ゲーマーズコミュニティAFTERGLOW HUB",
   title: "AFTERGLOWHUB BLOG",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
