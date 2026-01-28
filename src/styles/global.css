@@ -21,6 +21,7 @@ html[data-theme="dark"] {
 }
 
 @theme inline {
+  --font-google-sans-code: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-app: var(--font-google-sans-code);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
