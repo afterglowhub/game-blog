@@ -13,10 +13,50 @@ import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
 
 const posts = await getCollection("blog");
-Mingalaba
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+// ===== 完全デバッグ開始 =====
+console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+console.log("📊 ブログ記事認識・フィルタリング診断");
+console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+console.log("🔍 ステップ1: getCollection()結果");
+console.log("認識された記事の総数:", posts.length);
+console.log("\n取得された全記事:");
+posts.forEach((post, index) => {
+  console.log(`${index + 1}. slug: ${post.slug}`);
+  console.log(`   - title: ${post.data.title}`);
+  console.log(`   - author: ${post.data.author}`);
+  console.log(`   - pubDatetime: ${post.data.pubDatetime}`);
+  console.log(`   - featured: ${post.data.featured}`);
+  console.log(`   - draft: ${post.data.draft}`);
+});
+
+console.log("\n🔍 ステップ2: getSortedPosts()結果");
+console.log("フィルター後の記事数:", sortedPosts.length);
+if (sortedPosts.length !== posts.length) {
+  console.log("⚠️  記事が除外されています！");
+  const excludedSlugs = posts.map(p => p.slug).filter(slug => 
+    !sortedPosts.map(sp => sp.slug).includes(slug)
+  );
+  console.log("除外された記事:", excludedSlugs);
+}
+
+console.log("\n🔍 ステップ3: Featured/Recent分類");
+console.log("Featured記事数:", featuredPosts.length);
+console.log("Recent記事数:", recentPosts.length);
+
+console.log("\nFeatured記事一覧:");
+featuredPosts.forEach((post, index) => {
+  console.log(`${index + 1}. ${post.slug} - ${post.data.title}`);
+});
+
+console.log("\nRecent記事一覧:");
+recentPosts.forEach((post, index) => {
+  console.log(`${index + 1}. ${post.slug} - ${post.data.title}`);
+});
+console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+// ===== デバッグ終了 =====
 ---
 
 <Layout>
