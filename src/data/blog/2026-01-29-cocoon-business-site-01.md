@@ -1,18 +1,12 @@
 ---
 author: AFTERGLOW HUB
-pubDatetime: 2026-01-27T10:00:00Z
-modDatetime: 2026-01-27T10:00:00Z
+pubDatetime: 2026-01-28T10:00:00Z
+modDatetime: 2026-01-28T10:00:00Z
 title: "【2026】Cocoonで今日中に会社HPを公開する：名刺代わりの“器”を最短で作る（第1回）"
 slug: "cocoon-business-site-01"
 featured: true
 draft: false
-tags:
-  - WordPress
-  - Cocoon
-  - 会社HP
-  - 初心者
-  - Web制作
-  - 更新設計
+tags: ["WordPress", "Cocoon", "初心者"]
 description: "初心者でも今日中に“名刺代わり”の会社HPを公開するための最短手順。トップ固定ページ化、メニュー導線、新着表示（new_list）で更新感を出すところまで一気に作ります。"
 ---
 
