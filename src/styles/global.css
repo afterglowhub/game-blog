@@ -30,18 +30,14 @@
 	font-display: swap;
 }
 body {
-    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
-                 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: left;
-    /* 宇宙っぽいグラデーションを廃止し、清潔感のある白に */
     background: #ffffff; 
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     color: rgb(var(--gray-dark));
-    font-size: 18px; /* 少し小さくしてスッキリさせる */
-    line-height: 1.8; /* 行間を広げてゆとりを */
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: left; /* 基本は左、見出しだけ中央にするのが読みやすいです */
 }
 
 /* タイトルをもっとおとなしく */
@@ -69,48 +65,58 @@ blockquote {
     font-style: italic;
 }
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+    width: 100%;           /* スマホでは幅いっぱいに使う */
+    max-width: 720px;      /* PCでは広がりすぎないように制限 */
+    margin: 0 auto;        /* 常に中央配置 */
+    padding: 3rem 1.5rem;  /* 左右に指一本分の余白（1.5rem）を確保 */
+    box-sizing: border-box; /* 余白を幅の中に含める（超重要！） */
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
+/* --- 3. 見出し（スッキリ・階層順） --- */
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(var(--black));
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 2.5rem 0 1rem 0; /* 上にゆとりを持たせてスッキリ */
 }
+
 h1 {
-	font-size: 3.052em;
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0 1.5rem;
+    letter-spacing: 0.05em;
 }
+
 h2 {
-	font-size: 2.441em;
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--accent); /* カフェ風のグリーンの下線 */
+    padding-bottom: 0.3em;
 }
+
 h3 {
-	font-size: 1.953em;
+    font-size: 1.3rem;
+    color: var(--accent); /* 小見出しを緑色にしてアクセントに */
 }
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
+
+h4 { font-size: 1.15rem; }
+h5 { font-size: 1rem; }
+
+strong, b {
+    font-weight: 700;
+    color: rgb(var(--black)); /* 太字を少しだけ強調 */
 }
 a {
-	color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    transition: 0.3s;
 }
+
 a:hover {
-	color: var(--accent);
+    color: var(--accent-dark);
+    text-decoration: underline;
 }
 p {
-	margin-bottom: 1em;
+	margin-bottom: 1.5rem;
+    line-height: 1.8;
 }
 .prose p {
 	margin-bottom: 2em;
@@ -126,9 +132,11 @@ table {
 	width: 100%;
 }
 img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
 }
 code {
 	padding: 2px 5px;
@@ -152,13 +160,23 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+/* --- スマホ専用の調整 --- */
 @media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+    body {
+        font-size: 17px; /* わずかに小さくしてスッキリ */
+    }
+    main {
+        padding: 2rem 1.2rem; /* スマホでの上下左右の余白 */
+    }
+    h1 {
+        font-size: 1.5rem; /* スマホではタイトルをさらに抑える */
+    }
+    
+    /* 画像や要素が画面を突き抜けないようにするお守り */
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 .sr-only {
