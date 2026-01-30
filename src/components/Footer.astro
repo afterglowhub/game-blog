@@ -26,23 +26,53 @@ const today = new Date();
 
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		padding: 2rem 1rem; /* 上下の余白をギュッと凝縮 */
+		background: #ffffff;
 		color: rgb(var(--gray));
 		text-align: center;
 	}
+
+	.footer-content {
+		display: flex;
+		flex-direction: row; /* 横並びに固定 */
+		align-items: center;
+		justify-content: center;
+		gap: 0.8rem; /* コピーライトとアイコンの隙間 */
+		font-size: 0.7rem; /* 文字をかなり小さく */
+	}
+
 	.social-links {
 		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
+		align-items: center;
+		gap: 0.6rem; /* アイコン同士の隙間 */
 	}
+
 	.social-links a {
-		text-decoration: none;
+		display: flex;
+		align-items: center;
 		color: rgb(var(--gray));
+		text-decoration: none;
 		transition: color 0.3s ease;
 	}
+
+	.social-links svg {
+		width: 14px; /* アイコンをさらに極小に */
+		height: 14px;
+	}
+
 	.social-links a:hover {
-		color: var(--accent); /* ホバー時に大人女子グリーンに */
+		color: var(--accent);
+	}
+
+	/* スマホで1行に収めるための微調整 */
+	@media (max-width: 720px) {
+		.footer-content {
+			flex-wrap: nowrap; /* 絶対に折り返さない */
+			font-size: 0.65rem; /* スマホではさらに小さく */
+			letter-spacing: -0.02em; /* 文字間隔をわずかに詰めて1行に収める */
+		}
+		.social-links {
+			gap: 0.4rem;
+		}
 	}
 </style>
