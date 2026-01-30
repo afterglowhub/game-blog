@@ -16,7 +16,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 		<style>
 			main {
-				width: calc(100% - 2em);
+				width: 100%;
 				max-width: 100%;
 				margin: 0;
 			}
@@ -42,131 +42,139 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				text-align: center;
 				line-height: 1;
 			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
+
 			/* =========================================
-   				日本語向けサイズ調整（ここから追加）
-   				========================================= */
+				日本語向けサイズ調整 & 崩れ防止
+			   ========================================= */
 
-			/* 記事タイトル（一番上の大見出し） */
 			.title h1 {
-  			font-size: 2em !important;
-  			line-height: 1.3 !important;
-  			margin: 0 0 0.5em 0 !important;
+				font-size: 2em !important;
+				line-height: 1.3 !important;
+				margin: 0 0 0.5em 0 !important;
 			}
 
-			/* 記事本文の H1（大見出し） */
-			.prose h1 {
-  			font-size: 1.8em !important;
-  			margin-top: 2em !important;
-  			margin-bottom: 0.8em !important;
-  			border-bottom: 2px solid #e5e7eb;
-  			padding-bottom: 0.3em;
-			}
-
-			/* 記事本文の H2（中見出し） */
 			.prose h2 {
-  			font-size: 1.4em !important;
-  			margin-top: 1.8em !important;
-  			margin-bottom: 0.6em !important;
-  			border-bottom: 2px solid var(--accent) !important; /* 深緑の線 */
-    		color: var(--accent) !important;
-  			padding-bottom: 0.2em;
+				font-size: 1.4em !important;
+				margin-top: 1.8em !important;
+				margin-bottom: 0.6em !important;
+				border-bottom: 2px solid var(--accent) !important;
+				color: var(--accent) !important;
+				padding-bottom: 0.2em;
 			}
 
-			/* 記事本文の H3（小見出し） */
 			.prose h3 {
-  			font-size: 1.2em !important;
-  			margin-top: 1.5em !important;
-  			margin-bottom: 0.5em !important;
-  			font-weight: 600;
+				font-size: 1.2em !important;
+				margin-top: 1.5em !important;
+				margin-bottom: 0.5em !important;
+				font-weight: 600;
 			}
 
-			/* 本文の文字サイズと行間 */
 			.prose p {
-  			font-size: 1rem !important;
-  			line-height: 1.8 !important;
-  			margin-bottom: 1.5em !important;
+				font-size: 1rem !important;
+				line-height: 1.8 !important;
+				margin-bottom: 1.5em !important;
 			}
 
-			/* テーブルのスタイル改善 */
-			.prose table {
-  			font-size: 0.9rem !important;
+			/* コードブロックの崩れ防止（スマホで横スクロール可能に） */
+			.prose pre {
+				font-size: 0.85rem !important;
+				padding: 1rem !important;
+				overflow-x: auto !important;
+				white-space: pre !important; /* 勝手に改行させない */
+				word-wrap: normal !important;
+				border-radius: 8px;
 			}
 			
-    		.back-btn {
-   			 padding: 0.6rem 2rem;
-    		border: 1px solid var(--accent);
-    		color: var(--accent);
-    		text-decoration: none;
-    		border-radius: 50px;
-    		font-size: 0.9rem;
-    		transition: all 0.3s ease;
-  			}
-  			.back-btn:hover {
-    		background-color: var(--accent);
-    		color: white;
-  			}
+			.prose code {
+				font-size: 0.85rem !important;
+			}
 
+			/* 戻るボタンの割れ防止 */
+			.back-to-blog {
+				display: flex;
+				justify-content: center;
+				margin-top: 4rem;
+				padding: 0 1rem;
+			}
+			.back-btn {
+				display: inline-block;
+				padding: 0.8rem 2.5rem; /* 左右の余白を多めに */
+				border: 1px solid var(--accent);
+				color: var(--accent);
+				text-decoration: none;
+				border-radius: 50px;
+				font-size: 0.95rem;
+				transition: all 0.3s ease;
+				white-space: nowrap; /* 2行にさせない */
+				text-align: center;
+			}
+			.back-btn:hover {
+				background-color: var(--accent);
+				color: white;
+			}
+
+			/* スマホ専用の余白最適化 */
+			@media (max-width: 720px) {
+				.prose {
+					max-width: 95%; /* 左右の余白を削って文字を広く */
+					padding: 0.5rem;
+				}
+				.title h1 {
+					font-size: 1.6em !important;
+				}
+				/* コード内の文字が小さすぎないよう微調整 */
+				.prose pre {
+					font-size: 0.8rem !important;
+				}
+			}
 		</style>
 	</head>
 
-<body>
-  <Header />
-  <main>
-    <article>
-      <div class="hero-image">
-        {heroImage ? (
-          <Image width={1020} height={510} src={heroImage} alt="" />
-        ) : (
-          /* ここにランダム画像を表示させる処理を足すこともできますが、
-             まずはシンプルに「ある時だけ」のままにしています */
-          <div style="height: 100px;"></div> 
-        )}
-      </div>
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage ? (
+						<Image width={1020} height={510} src={heroImage} alt="" />
+					) : (
+						<div style="height: 60px;"></div> 
+					)}
+				</div>
 
-      <div class="prose">
-        <div class="title">
-          <nav style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--gray);">
-             <a href="/" style="color: var(--gray);">Home</a> / 
-             <a href="/blog" style="color: var(--gray);">Blog</a> / 
-             <span>Reading...</span>
-          </nav>
-          
-          <div class="date">
-            <FormattedDate date={pubDate} />
-            </div>
-          <h1>{title}</h1>
-          <hr />
-        </div>
-        
-        <slot />
+				<div class="prose">
+					<div class="title">
+						<nav style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--gray);">
+							<a href="/" style="color: var(--gray);">Home</a> / 
+							<a href="/blog" style="color: var(--gray);">Blog</a> / 
+							<span>Reading...</span>
+						</nav>
+						<div class="date">
+							<FormattedDate date={pubDate} />
+						</div>
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					
+					<slot />
 
-		<div style="background-color: #f2f4f0; padding: 2rem; border-radius: 15px; margin: 3rem 0; text-align: center;">
-    <h3 style="margin-top: 0; color: var(--accent); font-size: 1.2rem;">Enjoying the Game Life?</h3>
-    <p style="font-size: 0.9rem; color: #666;">
-        35歳以上のゲーム募集サイト<br />
-        <strong>AFTERGLOW HUB</strong> で仲間を探してみませんか？
-    </p>
-    <a href="https://game.afterglowhub.com" target="_blank" style="display: inline-block; background-color: var(--accent); color: white; padding: 0.6rem 1.5rem; border-radius: 25px; text-decoration: none; font-size: 0.85rem;">
-        コミュニティを覗いてみる →
-    </a>
-</div>
+					<div style="background-color: #f2f4f0; padding: 2rem 1.5rem; border-radius: 15px; margin: 4rem 0; text-align: center;">
+						<h3 style="margin-top: 0; color: var(--accent); font-size: 1.2rem;">Enjoying the Game Life?</h3>
+						<p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">
+							35歳以上の大人ゲーマー向けコミュニティ<br />
+							<strong>AFTERGLOW HUB</strong> で仲間を探してみませんか？
+						</p>
+						<a href="https://game.afterglowhub.com" target="_blank" style="display: inline-block; background-color: var(--accent); color: white; padding: 0.7rem 1.5rem; border-radius: 25px; text-decoration: none; font-size: 0.85rem; font-weight: bold;">
+							コミュニティを覗いてみる →
+						</a>
+					</div>
 
-        <div class="back-to-blog">
-          <a href="/blog" class="back-btn">← 記事一覧に戻る</a>
-        </div>
-      </div>
-    </article>
-  </main>
-  <Footer />
-</body>
+					<div class="back-to-blog">
+						<a href="/blog" class="back-btn">← 記事一覧に戻る</a>
+					</div>
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
 </html>
