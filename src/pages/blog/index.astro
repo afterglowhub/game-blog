@@ -83,7 +83,16 @@ const posts = (await getCollection('blog')).sort(
 				ul li:first-child .title {
 					font-size: 1.563em;
 				}
-			}
+				ul li a:hover img {
+    				transform: scale(1.02); /* ほんの少しだけ大きく */
+    				box-shadow: 0 10px 20px rgba(85, 107, 47, 0.15); /* 優しい緑の影 */
+    				filter: brightness(1.05); /* 少しだけ明るくして「陽が差し込んだ」感じに */
+				}
+
+				ul li img {
+    				transition: all 0.4s ease; /* 変化をゆっくり滑らかに */
+				}
+			
 		</style>
 	</head>
 	<body>
@@ -91,22 +100,32 @@ const posts = (await getCollection('blog')).sort(
 		<main>
 			<section>
 				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+  {
+    posts.map((post) => {
+      // 1から6の整数をランダムに生成
+      const randomNumber = Math.floor(Math.random() * 6) + 1;
+      const randomImage = `/images/hero-sample${randomNumber}.png`;
+
+      return (
+        <li>
+          <a href={`/blog/${post.id}/`}>
+            <img 
+              width={720} 
+              height={360} 
+              src={post.data.heroImage || randomImage} 
+              alt={post.data.title} 
+              style="aspect-ratio: 16/9; object-fit: cover;"
+            />
+            <h4 class="title">{post.data.title}</h4>
+            <p class="date">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
 			</section>
 		</main>
 		<Footer />

@@ -77,7 +77,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   			font-size: 1.4em !important;
   			margin-top: 1.8em !important;
   			margin-bottom: 0.6em !important;
-  			border-bottom: 1px solid #d1d5db;
+  			border-bottom: 2px solid var(--accent) !important; /* 深緑の線 */
+    		color: var(--accent) !important;
   			padding-bottom: 0.2em;
 			}
 
@@ -100,36 +101,61 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.prose table {
   			font-size: 0.9rem !important;
 			}
+			
+    		.back-btn {
+   			 padding: 0.6rem 2rem;
+    		border: 1px solid var(--accent);
+    		color: var(--accent);
+    		text-decoration: none;
+    		border-radius: 50px;
+    		font-size: 0.9rem;
+    		transition: all 0.3s ease;
+  			}
+  			.back-btn:hover {
+    		background-color: var(--accent);
+    		color: white;
+  			}
 
 		</style>
 	</head>
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+<body>
+  <Header />
+  <main>
+    <article>
+      <div class="hero-image">
+        {heroImage ? (
+          <Image width={1020} height={510} src={heroImage} alt="" />
+        ) : (
+          /* ここにランダム画像を表示させる処理を足すこともできますが、
+             まずはシンプルに「ある時だけ」のままにしています */
+          <div style="height: 100px;"></div> 
+        )}
+      </div>
+
+      <div class="prose">
+        <div class="title">
+          <nav style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--gray);">
+             <a href="/" style="color: var(--gray);">Home</a> / 
+             <a href="/blog" style="color: var(--gray);">Blog</a> / 
+             <span>Reading...</span>
+          </nav>
+          
+          <div class="date">
+            <FormattedDate date={pubDate} />
+            </div>
+          <h1>{title}</h1>
+          <hr />
+        </div>
+        
+        <slot />
+
+        <div class="back-to-blog">
+          <a href="/blog" class="back-btn">← 記事一覧に戻る</a>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</body>
 </html>
