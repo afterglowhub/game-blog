@@ -7,16 +7,15 @@ const today = new Date();
 		<span>&copy; {today.getFullYear()} AFTERGLOW HUB.</span>
 		<div class="social-links">
 			<a href="https://x.com/AFTERGLOWHUB" target="_blank">x</a>
-			<a href="https://note.com/あなたのID" target="_blank">note</a>
 		</div>
 	</div>
 </footer>
 
 <style>
 	footer {
-		padding: 1.5rem 1rem; /* 上下の余白をさらにタイトに */
+		padding: 1.5rem 1rem;
 		background: #ffffff;
-		border-top: 1px solid #f0f0f0;
+		border-top: 1px solid #f8f8f8; /* さらに薄い線で清潔感を */
 	}
 
 	.footer-row {
@@ -24,34 +23,28 @@ const today = new Date();
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem; /* コピーライトとリンクの間の隙間 */
-		font-size: 0.7rem; /* 全体的にひっそりとしたサイズ */
+		gap: 0.8rem; /* コピーライトとxの距離 */
+		font-size: 0.7rem;
 		color: rgb(var(--gray));
-		white-space: nowrap; /* スマホでも絶対に改行させない */
-	}
-
-	.social-links {
-		display: flex;
-		gap: 0.8rem; /* x と note の間の隙間 */
+		white-space: nowrap; /* 1行を死守 */
 	}
 
 	.social-links a {
 		color: rgb(var(--gray));
 		text-decoration: none;
 		transition: color 0.3s ease;
-		border-bottom: 1px solid transparent; /* 下線が出る準備 */
+		/* 小さな「x」を押しやすくするため少しだけ余白を持たせる */
+		padding: 0.2rem 0.5rem;
 	}
 
 	.social-links a:hover {
 		color: var(--accent);
-		border-bottom: 1px solid var(--accent);
 	}
 
-	/* スマホでの微調整（より小さく1行を維持） */
 	@media (max-width: 720px) {
 		.footer-row {
 			font-size: 0.65rem;
-			gap: 0.6rem;
+			gap: 0.5rem;
 		}
 	}
 </style>
