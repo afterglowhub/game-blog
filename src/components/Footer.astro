@@ -3,76 +3,55 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} AFTERGLOW HUB. All rights reserved.
-	<div class="social-links">
-		<a href="https://x.com/AFTERGLOWHUB" target="_blank">
-			<span class="sr-only">Follow on X</span>
-			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
-				<path
-					fill="currentColor"
-					d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.055-4.425 5.055H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z"
-				></path>
-			</svg>
-		</a>
-		<a href="https://note.com/あなたのユーザーID" target="_blank">
-			<span class="sr-only">Follow on note</span>
-			<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 20h9"></path>
-				<path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-			</svg>
-		</a>
+	<div class="footer-row">
+		<span>&copy; {today.getFullYear()} AFTERGLOW HUB.</span>
+		<div class="social-links">
+			<a href="https://x.com/AFTERGLOWHUB" target="_blank">x</a>
+			<a href="https://note.com/あなたのID" target="_blank">note</a>
+		</div>
 	</div>
 </footer>
 
 <style>
 	footer {
-		padding: 2rem 1rem; /* 上下の余白をギュッと凝縮 */
+		padding: 1.5rem 1rem; /* 上下の余白をさらにタイトに */
 		background: #ffffff;
-		color: rgb(var(--gray));
-		text-align: center;
+		border-top: 1px solid #f0f0f0;
 	}
 
-	.footer-content {
+	.footer-row {
 		display: flex;
-		flex-direction: row; /* 横並びに固定 */
+		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		gap: 0.8rem; /* コピーライトとアイコンの隙間 */
-		font-size: 0.7rem; /* 文字をかなり小さく */
+		gap: 1rem; /* コピーライトとリンクの間の隙間 */
+		font-size: 0.7rem; /* 全体的にひっそりとしたサイズ */
+		color: rgb(var(--gray));
+		white-space: nowrap; /* スマホでも絶対に改行させない */
 	}
 
 	.social-links {
 		display: flex;
-		align-items: center;
-		gap: 0.6rem; /* アイコン同士の隙間 */
+		gap: 0.8rem; /* x と note の間の隙間 */
 	}
 
 	.social-links a {
-		display: flex;
-		align-items: center;
 		color: rgb(var(--gray));
 		text-decoration: none;
 		transition: color 0.3s ease;
-	}
-
-	.social-links svg {
-		width: 14px; /* アイコンをさらに極小に */
-		height: 14px;
+		border-bottom: 1px solid transparent; /* 下線が出る準備 */
 	}
 
 	.social-links a:hover {
 		color: var(--accent);
+		border-bottom: 1px solid var(--accent);
 	}
 
-	/* スマホで1行に収めるための微調整 */
+	/* スマホでの微調整（より小さく1行を維持） */
 	@media (max-width: 720px) {
-		.footer-content {
-			flex-wrap: nowrap; /* 絶対に折り返さない */
-			font-size: 0.65rem; /* スマホではさらに小さく */
-			letter-spacing: -0.02em; /* 文字間隔をわずかに詰めて1行に収める */
-		}
-		.social-links {
-			gap: 0.4rem;
+		.footer-row {
+			font-size: 0.65rem;
+			gap: 0.6rem;
 		}
 	}
 </style>
