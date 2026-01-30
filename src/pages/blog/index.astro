@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -18,7 +17,11 @@ const posts = (await getCollection('blog')).sort(
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				width: 960px;
+				width: 100%;
+				max-width: 960px;
+				margin: 0 auto;
+				padding: 3rem 1.5rem;
+				box-sizing: border-box;
 			}
 			ul {
 				display: flex;
@@ -29,70 +32,65 @@ const posts = (await getCollection('blog')).sort(
 				padding: 0;
 			}
 			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
+				width: calc(50% - 1rem); /* PCでは2列 */
 				margin-bottom: 1rem;
-				text-align: center;
+			}
+			/* 1番目の記事を巨大化させず、他と揃える */
+			ul li:first-child {
+				width: calc(50% - 1rem);
+				text-align: left;
+			}
+			ul li:first-child .title {
+				font-size: 1.2rem;
 			}
 			ul li:first-child img {
 				width: 100%;
 			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
+			
 			ul li img {
-				margin-bottom: 0.5rem;
 				border-radius: 12px;
+				transition: all 0.4s ease;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 			}
 			ul li a {
 				display: block;
+				text-decoration: none;
 			}
 			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
+				margin: 0.5rem 0 0.2rem 0;
+				color: var(--accent); /* 大人女子グリーン */
+				line-height: 1.4;
+				font-size: 1.2rem;
 			}
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
+				font-size: 0.9rem;
 			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
+
+			/* ホバー時の優雅なエフェクト */
+			ul li a:hover img {
+				transform: scale(1.02);
+				box-shadow: 0 10px 20px rgba(85, 107, 47, 0.15);
+				filter: brightness(1.05);
 			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
+
+			/* --- スマホ表示の「崩れ」を解消 --- */
 			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
+				main {
+					padding: 1.5rem 1rem;
 				}
-				ul li {
-					width: 100%;
+				ul {
+					gap: 2.5rem; /* 記事同士の間隔を広げて見やすく */
+				}
+				ul li, ul li:first-child {
+					width: 100%; /* スマホでは潔く1列 */
 					text-align: center;
 				}
-				ul li:first-child {
-					margin-bottom: 0;
+				.title {
+					font-size: 1.1rem;
 				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-				ul li a:hover img {
-    				transform: scale(1.02); /* ほんの少しだけ大きく */
-    				box-shadow: 0 10px 20px rgba(85, 107, 47, 0.15); /* 優しい緑の影 */
-    				filter: brightness(1.05); /* 少しだけ明るくして「陽が差し込んだ」感じに */
-				}
-
-				ul li img {
-    				transition: all 0.4s ease; /* 変化をゆっくり滑らかに */
-				}
-			
+			}
 		</style>
 	</head>
 	<body>
@@ -100,32 +98,32 @@ const posts = (await getCollection('blog')).sort(
 		<main>
 			<section>
 				<ul>
-  {
-    posts.map((post) => {
-      // 1から6の整数をランダムに生成
-      const randomNumber = Math.floor(Math.random() * 6) + 1;
-      const randomImage = `/images/hero-sample${randomNumber}.png`;
+					{
+						posts.map((post) => {
+							// 1から6の整数をランダムに生成
+							const randomNumber = Math.floor(Math.random() * 6) + 1;
+							const randomImage = `/images/hero-sample${randomNumber}.png`;
 
-      return (
-        <li>
-          <a href={`/blog/${post.id}/`}>
-            <img 
-              width={720} 
-              height={360} 
-              src={post.data.heroImage || randomImage} 
-              alt={post.data.title} 
-              style="aspect-ratio: 16/9; object-fit: cover;"
-            />
-            <h4 class="title">{post.data.title}</h4>
-            <p class="date">
-              <FormattedDate date={post.data.pubDate} />
-            </p>
-          </a>
-        </li>
-      );
-    })
-  }
-</ul>
+							return (
+								<li>
+									<a href={`/blog/${post.id}/`}>
+										<img 
+											width={720} 
+											height={360} 
+											src={post.data.heroImage || randomImage} 
+											alt={post.data.title} 
+											style="aspect-ratio: 16/9; object-fit: cover;"
+										/>
+										<h4 class="title">{post.data.title}</h4>
+										<p class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
+									</a>
+								</li>
+							);
+						})
+					}
+				</ul>
 			</section>
 		</main>
 		<Footer />
