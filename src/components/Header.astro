@@ -50,12 +50,29 @@ import HeaderLink from './HeaderLink.astro';
 	}
 
 	@media (max-width: 720px) {
+		nav {
+        	display: flex;
+        	justify-content: space-between; /* 両端に広げる */
+        	align-items: center;
+        	width: 100%;
+        	padding: 0 1rem; /* 画面端に密着しないように少し余白を */
+    	}
+
 		#menu-toggle {
-			display: block;
-			background: none;
-			border: none;
-			color: var(--accent);
-		}
+        	display: block;
+        	background: none;
+        	border: none;
+        	color: var(--accent);
+        	padding: 0.5rem; /* タップしやすく */
+        	margin-right: -0.5rem; /* 右端にピタッと寄せる調整 */
+        	order: 2; /* 確実に右側に配置 */
+    	}
+
+    	h2 {
+        	margin: 0;
+        	order: 1; /* 確実に左側に配置 */
+    	}
+		
 		.internal-links {
 			display: none; /* スマホでは最初隠す */
 			position: absolute;
@@ -66,10 +83,13 @@ import HeaderLink from './HeaderLink.astro';
 			flex-direction: column;
 			padding: 1rem 0;
 			box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+			z-index: 99;
 		}
+		
 		.internal-links.show {
 			display: flex;
 		}
+		
 		.internal-links a {
 			padding: 1rem;
 			border-bottom: none;
