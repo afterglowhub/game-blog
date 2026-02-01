@@ -92,46 +92,46 @@ if (slug) {
 	}
 
 /* ========== 見出し ========== */
+/* 見出しを本文に近いサイズに */
 .prose h2 {
-	font-size: 1.375rem;  /* 1.5rem → 1.375rem に縮小 */
-	margin-top: 2.5rem;    /* 3rem → 2.5rem に縮小 */
-	margin-bottom: 0.875rem; /* 1rem → 0.875rem に縮小 */
+	font-size: 1.125rem;  /* 本文の1.125倍 */
+	margin-top: 2rem;
+	margin-bottom: 0.75rem;
 	font-weight: 700;
 	color: #1a1a1a;
 	line-height: 1.5;
-	padding-bottom: 0.4rem; /* 0.5rem → 0.4rem に縮小 */
-	border-bottom: 2px solid #ddd;
+	padding-bottom: 0.3rem;
+	border-bottom: 1px solid #ddd;
 }
 
 .prose h3 {
-	font-size: 1.125rem;  /* 1.25rem → 1.125rem に縮小 */
-	margin-top: 2rem;      /* 2.5rem → 2rem に縮小 */
-	margin-bottom: 0.75rem; /* 1rem → 0.75rem に縮小 */
+	font-size: 1.0625rem;  /* 本文の1.0625倍 */
+	margin-top: 1.75rem;
+	margin-bottom: 0.625rem;
 	font-weight: 700;
 	color: #333;
 	line-height: 1.5;
 }
 
 .prose h4 {
-	font-size: 1.0625rem;  /* 1.125rem → 1.0625rem に縮小 */
-	margin-top: 1.75rem;   /* 2rem → 1.75rem に縮小 */
-	margin-bottom: 0.625rem; /* 0.75rem → 0.625rem に縮小 */
+	font-size: 1rem;       /* 本文と同じ */
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
 	font-weight: 600;
 	color: #333;
 }
 
-/* スマホではさらに小さく */
 @media (max-width: 640px) {
 	.prose h2 {
-		font-size: 1.1875rem;  /* 1.375rem → 1.1875rem */
-		margin-top: 2rem;
-		margin-bottom: 0.75rem;
+		font-size: 1.0625rem;
+		margin-top: 1.75rem;
+		margin-bottom: 0.625rem;
 	}
 
 	.prose h3 {
-		font-size: 1.0625rem;  /* 1.1875rem → 1.0625rem */
+		font-size: 1rem;
 		margin-top: 1.5rem;
-		margin-bottom: 0.625rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.prose h4 {
@@ -140,7 +140,6 @@ if (slug) {
 		margin-bottom: 0.5rem;
 	}
 }
-
 
 	/* ========== 本文 ========== */
 	.prose p {
@@ -169,31 +168,50 @@ if (slug) {
 	}
 
 	/* ========== コードブロック ========== */
+.prose pre {
+	font-size: 0.875rem;  /* 固定 */
+	padding: 1.25rem;
+	overflow-x: auto;
+	background: #f7f9fa;
+	border-radius: 8px;
+	margin: 2rem 0;
+	border: 1px solid #e5e7eb;
+	line-height: 1.6;
+}
+
+.prose code {
+	font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+	font-size: 0.875rem;  /* 固定 */
+}
+
+/* インラインコード */
+.prose :not(pre) > code {
+	background: #f0f2f5;
+	padding: 0.2em 0.5em;
+	border-radius: 4px;
+	font-size: 0.875rem;  /* 固定（相対指定から変更） */
+	color: #d73a49;
+	border: 1px solid #e5e7eb;
+}
+
+@media (max-width: 640px) {
 	.prose pre {
-		font-size: 0.875rem;
-		padding: 1.25rem;
-		overflow-x: auto;
-		background: #f7f9fa;
-		border-radius: 8px;
-		margin: 2rem 0;
-		border: 1px solid #e5e7eb;
-		line-height: 1.6;
-	}
-	
-	.prose code {
-		font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
-		font-size: 0.875rem;
+		font-size: 0.8125rem;  /* スマホ用固定サイズ */
+		padding: 1rem;
+		margin: 1.5rem -1.25rem;
+		border-radius: 0;
+		border-left: none;
+		border-right: none;
 	}
 
-	/* インラインコード */
-	.prose :not(pre) > code {
-		background: #f0f2f5;
-		padding: 0.2em 0.5em;
-		border-radius: 4px;
-		font-size: 0.875em;
-		color: #d73a49;
-		border: 1px solid #e5e7eb;
+	.prose code {
+		font-size: 0.8125rem;  /* スマホ用固定サイズ */
 	}
+
+	.prose :not(pre) > code {
+		font-size: 0.8125rem;
+	}
+}
 
 	/* ========== 表 ========== */
 	.prose table {
