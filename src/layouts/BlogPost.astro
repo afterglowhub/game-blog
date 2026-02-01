@@ -91,34 +91,56 @@ if (slug) {
 		margin-bottom: 0.5rem;
 	}
 
-	/* ========== 見出し ========== */
+/* ========== 見出し ========== */
+.prose h2 {
+	font-size: 1.375rem;  /* 1.5rem → 1.375rem に縮小 */
+	margin-top: 2.5rem;    /* 3rem → 2.5rem に縮小 */
+	margin-bottom: 0.875rem; /* 1rem → 0.875rem に縮小 */
+	font-weight: 700;
+	color: #1a1a1a;
+	line-height: 1.5;
+	padding-bottom: 0.4rem; /* 0.5rem → 0.4rem に縮小 */
+	border-bottom: 2px solid #ddd;
+}
+
+.prose h3 {
+	font-size: 1.125rem;  /* 1.25rem → 1.125rem に縮小 */
+	margin-top: 2rem;      /* 2.5rem → 2rem に縮小 */
+	margin-bottom: 0.75rem; /* 1rem → 0.75rem に縮小 */
+	font-weight: 700;
+	color: #333;
+	line-height: 1.5;
+}
+
+.prose h4 {
+	font-size: 1.0625rem;  /* 1.125rem → 1.0625rem に縮小 */
+	margin-top: 1.75rem;   /* 2rem → 1.75rem に縮小 */
+	margin-bottom: 0.625rem; /* 0.75rem → 0.625rem に縮小 */
+	font-weight: 600;
+	color: #333;
+}
+
+/* スマホではさらに小さく */
+@media (max-width: 640px) {
 	.prose h2 {
-		font-size: 1.5rem;
-		margin-top: 3rem;
-		margin-bottom: 1rem;
-		font-weight: 700;
-		color: #1a1a1a;
-		line-height: 1.5;
-		padding-bottom: 0.5rem;
-		border-bottom: 2px solid #ddd;
+		font-size: 1.1875rem;  /* 1.375rem → 1.1875rem */
+		margin-top: 2rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.prose h3 {
-		font-size: 1.25rem;
-		margin-top: 2.5rem;
-		margin-bottom: 1rem;
-		font-weight: 700;
-		color: #333;
-		line-height: 1.5;
+		font-size: 1.0625rem;  /* 1.1875rem → 1.0625rem */
+		margin-top: 1.5rem;
+		margin-bottom: 0.625rem;
 	}
 
 	.prose h4 {
-		font-size: 1.125rem;
-		margin-top: 2rem;
-		margin-bottom: 0.75rem;
-		font-weight: 600;
-		color: #333;
+		font-size: 1rem;
+		margin-top: 1.25rem;
+		margin-bottom: 0.5rem;
 	}
+}
+
 
 	/* ========== 本文 ========== */
 	.prose p {
