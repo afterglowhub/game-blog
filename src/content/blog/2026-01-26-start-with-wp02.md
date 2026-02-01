@@ -110,7 +110,6 @@ YouTubeやX（Twitter）の投稿URLを、固定ページの編集画面に貼�
 
 - [Cocoon公式マニュアル](https://wp-cocoon.com/manual/) - 設定に迷ったらまずここを確認
 - [Cocoonフォーラム](https://wp-cocoon.com/community/) - 過去のQ&Aが宝の山です
-- [Turicco](https://turicco.com/tag/toppage/) - トップページ作成などカスタマイズ解説が素晴らしい
 - [寝る子ブログ（Cocoonカスタマイズ）](https://neruko-blog.com/category/wordpress/cocoon-customize/) - おしゃれにしたい時のコピペ集
 
 まずはこの愛着ある1号機を、名刺代わりに使い倒してみてください！

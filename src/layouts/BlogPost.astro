@@ -37,199 +37,384 @@ if (slug) {
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
-			main {
-				width: 100%;
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
+	/* ========== ベース設定 ========== */
+	main {
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		background: #fff;
+	}
+	
+	.hero-image {
+		width: 100%;
+		max-width: 100%;
+		margin-bottom: 1.5rem;
+	}
+	
+	.hero-image img {
+		display: block;
+		margin: 0 auto;
+		border-radius: 8px;
+		width: 100%;
+		height: auto;
+	}
+	
+	.prose {
+		width: 100%;
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 2rem 1.5rem;
+		color: #333;
+		font-size: 1rem;
+		line-height: 1.85;
+	}
+	
+	/* ========== タイトルエリア ========== */
+	.title {
+		margin-bottom: 2rem;
+		padding: 0;
+		text-align: left;
+	}
+	
+	.title h1 {
+		font-size: 1.75rem;
+		line-height: 1.5;
+		margin: 0 0 1rem 0;
+		font-weight: 700;
+		color: #1a1a1a;
+		word-break: break-word;
+	}
+	
+	.date {
+		font-size: 0.875rem;
+		color: #999;
+		margin-bottom: 0.5rem;
+	}
 
-			/* =========================================
-				日本語向けサイズ調整 & 崩れ防止
-			   ========================================= */
+	/* ========== 見出し ========== */
+	.prose h2 {
+		font-size: 1.5rem;
+		margin-top: 3rem;
+		margin-bottom: 1rem;
+		font-weight: 700;
+		color: #1a1a1a;
+		line-height: 1.5;
+		padding-bottom: 0.5rem;
+		border-bottom: 2px solid #ddd;
+	}
 
-			.title h1 {
-				font-size: 2em !important;
-				line-height: 1.3 !important;
-				margin: 0 0 0.5em 0 !important;
-			}
+	.prose h3 {
+		font-size: 1.25rem;
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
+		font-weight: 700;
+		color: #333;
+		line-height: 1.5;
+	}
 
-			.prose h2 {
-				font-size: 1.4em !important;
-				margin-top: 1.8em !important;
-				margin-bottom: 0.6em !important;
-				border-bottom: 2px solid var(--accent) !important;
-				color: var(--accent) !important;
-				padding-bottom: 0.2em;
-			}
+	.prose h4 {
+		font-size: 1.125rem;
+		margin-top: 2rem;
+		margin-bottom: 0.75rem;
+		font-weight: 600;
+		color: #333;
+	}
 
-			.prose h3 {
-				font-size: 1.2em !important;
-				margin-top: 1.5em !important;
-				margin-bottom: 0.5em !important;
-				font-weight: 600;
-			}
+	/* ========== 本文 ========== */
+	.prose p {
+		font-size: 1rem;
+		line-height: 1.9;
+		margin-bottom: 1.75rem;
+		color: #333;
+	}
 
-			.prose p {
-				font-size: 1rem !important;
-				line-height: 1.8 !important;
-				margin-bottom: 1.5em !important;
-			}
+	/* ========== リスト ========== */
+	.prose ul,
+	.prose ol {
+		margin: 1.5rem 0;
+		padding-left: 2rem;
+	}
 
-			/* コードブロックの崩れ防止（スマホで横スクロール可能に） */
-			.prose pre {
-				font-size: 0.85rem !important;
-				padding: 1rem !important;
-				overflow-x: auto !important;
-				white-space: pre !important;
-				word-wrap: normal !important;
-				border-radius: 8px;
-			}
-			
-			.prose code {
-				font-size: 0.85rem !important;
-			}
+	.prose li {
+		margin-bottom: 0.75rem;
+		line-height: 1.85;
+	}
 
-			/* 戻るボタンの割れ防止 */
-			.back-to-blog {
-				display: flex;
-				justify-content: center;
-				margin-top: 4rem;
-				padding: 0 1rem;
-			}
-			.back-btn {
-				display: inline-block;
-				padding: 0.8rem 2.5rem;
-				border: 1px solid var(--accent);
-				color: var(--accent);
-				text-decoration: none;
-				border-radius: 50px;
-				font-size: 0.95rem;
-				transition: all 0.3s ease;
-				white-space: nowrap;
-				text-align: center;
-			}
-			.back-btn:hover {
-				background-color: var(--accent);
-				color: white;
-			}
+	.prose ul ul,
+	.prose ol ol {
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
 
-			/* =========================================
-			   前後記事ナビゲーション
-			   ========================================= */
+	/* ========== コードブロック ========== */
+	.prose pre {
+		font-size: 0.875rem;
+		padding: 1.25rem;
+		overflow-x: auto;
+		background: #f7f9fa;
+		border-radius: 8px;
+		margin: 2rem 0;
+		border: 1px solid #e5e7eb;
+		line-height: 1.6;
+	}
+	
+	.prose code {
+		font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+		font-size: 0.875rem;
+	}
 
-			.post-footer-navigation {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 1rem;
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: 2rem auto 3rem;
-				padding: 0 1em;
-			}
+	/* インラインコード */
+	.prose :not(pre) > code {
+		background: #f0f2f5;
+		padding: 0.2em 0.5em;
+		border-radius: 4px;
+		font-size: 0.875em;
+		color: #d73a49;
+		border: 1px solid #e5e7eb;
+	}
 
-			.footer-nav-link {
-				display: block;
-				padding: 1rem 1.25rem;
-				background: #f9fafb;
-				border: 1px solid #e5e7eb;
-				border-radius: 8px;
-				text-decoration: none;
-				color: inherit;
-				transition: all 0.2s ease;
-			}
+	/* ========== 表 ========== */
+	.prose table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 2rem 0;
+		font-size: 0.9375rem;
+		background: #fff;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		overflow: hidden;
+	}
 
-			.footer-nav-link:hover {
-				background: var(--accent);
-				color: white;
-				border-color: var(--accent);
-			}
+	.prose th,
+	.prose td {
+		border: 1px solid #e5e7eb;
+		padding: 0.875rem 1rem;
+		text-align: left;
+		line-height: 1.6;
+	}
 
-			.footer-nav-link:hover .footer-nav-label {
-				color: rgba(255, 255, 255, 0.9);
-			}
+	.prose th {
+		background: #f7f9fa;
+		font-weight: 600;
+		color: #1a1a1a;
+	}
 
-			.footer-nav-link.prev {
-				text-align: left;
-			}
+	.prose tr:nth-child(even) {
+		background: #fafbfc;
+	}
 
-			.footer-nav-link.next {
-				text-align: right;
-			}
+	.prose tr:hover {
+		background: #f3f4f6;
+	}
 
-			.footer-nav-label {
-				display: block;
-				font-size: 0.7rem;
-				color: #9ca3af;
-				margin-bottom: 0.4rem;
-				font-weight: 600;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-			}
+	/* ========== 引用 ========== */
+	.prose blockquote {
+		margin: 2rem 0;
+		padding: 1rem 1.5rem;
+		border-left: 4px solid var(--accent);
+		background: #f9fafb;
+		color: #555;
+		font-style: normal;
+		border-radius: 0 4px 4px 0;
+	}
 
-			.footer-nav-title {
-				display: block;
-				font-size: 0.95rem;
-				font-weight: 600;
-				color: rgb(var(--gray-dark));
-				line-height: 1.4;
-			}
+	.prose blockquote p {
+		margin-bottom: 0;
+	}
 
-			.footer-nav-link:hover .footer-nav-title {
-				color: white;
-			}
+	/* ========== 画像 ========== */
+	.prose img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+		margin: 2rem 0;
+	}
 
-			/* スマホ専用の余白最適化 */
-			@media (max-width: 720px) {
-				.prose {
-					max-width: 95%;
-					padding: 0.5rem;
-				}
-				.title h1 {
-					font-size: 1.6em !important;
-				}
-				.prose pre {
-					font-size: 0.8rem !important;
-				}
-				
-				/* 前後記事ナビゲーション：スマホ対応 */
-				.post-footer-navigation {
-					grid-template-columns: 1fr;
-					gap: 0.75rem;
-					max-width: 95%;
-					margin: 1.5rem auto 2rem;
-				}
-				
-				.footer-nav-link {
-					padding: 1rem;
-				}
-				
-				.footer-nav-title {
-					font-size: 0.875rem;
-				}
-			}
-		</style>
+	/* ========== 区切り線 ========== */
+	.prose hr {
+		border: none;
+		border-top: 1px solid #e5e7eb;
+		margin: 2.5rem 0;
+	}
+
+	/* ========== リンク ========== */
+	.prose a {
+		color: var(--accent);
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		transition: border-color 0.2s;
+	}
+
+	.prose a:hover {
+		border-bottom-color: var(--accent);
+	}
+
+	/* ========== 前後記事ナビゲーション ========== */
+	.post-footer-navigation {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+		max-width: 720px;
+		margin: 3rem auto 2rem;
+		padding: 0 1.5rem;
+	}
+
+	.footer-nav-link {
+		display: block;
+		padding: 1.125rem;
+		background: #f9fafb;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.2s ease;
+	}
+
+	.footer-nav-link:hover {
+		background: #f3f4f6;
+		border-color: var(--accent);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.footer-nav-link.prev {
+		text-align: left;
+	}
+
+	.footer-nav-link.next {
+		text-align: right;
+	}
+
+	.footer-nav-label {
+		display: block;
+		font-size: 0.75rem;
+		color: #888;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.footer-nav-title {
+		display: block;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		line-height: 1.5;
+	}
+
+	/* ========== 戻るボタン ========== */
+	.back-to-blog {
+		display: flex;
+		justify-content: center;
+		margin: 2.5rem 0 3rem;
+		padding: 0 1.5rem;
+	}
+	
+	.back-btn {
+		display: inline-block;
+		padding: 0.875rem 2.25rem;
+		border: 1px solid var(--accent);
+		color: var(--accent);
+		text-decoration: none;
+		border-radius: 8px;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		white-space: nowrap;
+		text-align: center;
+	}
+	
+	.back-btn:hover {
+		background-color: var(--accent);
+		color: white;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	/* ========== スマホ最適化 ========== */
+	@media (max-width: 640px) {
+		.prose {
+			padding: 1.5rem 1.25rem;
+		}
+		
+		.title h1 {
+			font-size: 1.5rem;
+			line-height: 1.45;
+			margin-bottom: 0.875rem;
+		}
+
+		.prose h2 {
+			font-size: 1.375rem;
+			margin-top: 2.5rem;
+			margin-bottom: 0.875rem;
+		}
+
+		.prose h3 {
+			font-size: 1.1875rem;
+			margin-top: 2rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.prose p {
+			font-size: 1rem;
+			line-height: 1.85;
+			margin-bottom: 1.5rem;
+		}
+
+		/* コードブロック：スマホで横スクロール */
+		.prose pre {
+			font-size: 0.8125rem;
+			padding: 1rem;
+			margin: 1.5rem -1.25rem;
+			border-radius: 0;
+			border-left: none;
+			border-right: none;
+		}
+
+		/* 表：スマホで横スクロール */
+		.prose table {
+			display: block;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			font-size: 0.875rem;
+			margin: 1.5rem -1.25rem;
+			border-radius: 0;
+		}
+
+		.prose th,
+		.prose td {
+			padding: 0.75rem 0.875rem;
+			white-space: nowrap;
+		}
+
+		/* 前後記事ナビゲーション */
+		.post-footer-navigation {
+			grid-template-columns: 1fr;
+			gap: 0.75rem;
+			padding: 0 1.25rem;
+			margin: 2rem auto 1.5rem;
+		}
+		
+		.footer-nav-link {
+			padding: 1rem;
+		}
+		
+		.footer-nav-title {
+			font-size: 0.875rem;
+		}
+
+		.back-to-blog {
+			padding: 0 1.25rem;
+			margin: 2rem 0 2.5rem;
+		}
+
+		.back-btn {
+			font-size: 0.875rem;
+			padding: 0.75rem 1.75rem;
+		}
+	}
+</style>
 	</head>
 
 	<body>
