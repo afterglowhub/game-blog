@@ -7,22 +7,30 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { getCollection } from 'astro:content';
 
-type Props = CollectionEntry<'blog'>['data'];
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+type Props = CollectionEntry<'blog'>['data'] & {
+  slug?: string;  // ← ? を追加してオプショナルに
+};
+const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.props;
 
-// 全記事を取得して日付順に並べる
-const allPosts = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+// slugがある場合のみ前後記事を取得
+let prevPost = null;
+let nextPost = null;
 
-// 現在の記事のslugを取得（propsから）
-const currentSlug = slug;
+if (slug) {
+  // 全記事を取得して日付順に並べる
+  const allPosts = (await getCollection('blog'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// 現在の記事の位置を特定（post.idで検索）
-const currentIndex = allPosts.findIndex(post => post.id === currentSlug);
+  // 現在の記事のslugを取得（propsから）
+  const currentSlug = slug;
 
-// 前後の記事を取得
-const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
-const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  // 現在の記事の位置を特定（post.idで検索）
+  const currentIndex = allPosts.findIndex(post => post.id === currentSlug);
+
+  // 前後の記事を取得
+  prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+  nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+}
 ---
 
 <html lang="ja">
@@ -252,22 +260,24 @@ const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 					
 					<slot />
 
-					<!-- 前後記事ナビゲーション -->
-					<div class="post-footer-navigation">
-						{prevPost && (
-		<a href={`/blog/${prevPost.id}/`} class="footer-nav-link prev">
-			<span class="footer-nav-label">← 前の記事</span>
-			<span class="footer-nav-title">{prevPost.data.title}</span>
-		</a>
-	)}
-	
-	{nextPost && (
-		<a href={`/blog/${nextPost.id}/`} class="footer-nav-link next">
-			<span class="footer-nav-label">次の記事 →</span>
-			<span class="footer-nav-title">{nextPost.data.title}</span>
-							</a>
-						)}
-					</div>
+<!-- 前後記事ナビゲーション：ブログ記事の場合のみ表示 -->
+{slug && (prevPost || nextPost) && (
+  <div class="post-footer-navigation">
+    {prevPost && (
+      <a href={`/blog/${prevPost.id}/`} class="footer-nav-link prev">
+        <span class="footer-nav-label">← 前の記事</span>
+        <span class="footer-nav-title">{prevPost.data.title}</span>
+      </a>
+    )}
+    
+    {nextPost && (
+      <a href={`/blog/${nextPost.id}/`} class="footer-nav-link next">
+        <span class="footer-nav-label">次の記事 →</span>
+        <span class="footer-nav-title">{nextPost.data.title}</span>
+      </a>
+    )}
+  </div>
+)}
 
 					<!-- CTAボックス -->
 					<div style="background-color: #f2f4f0; padding: 2rem 1.5rem; border-radius: 15px; margin: 4rem 0; text-align: center;">
