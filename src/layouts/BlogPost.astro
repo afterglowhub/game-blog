@@ -23,220 +23,205 @@ const currentIndex = allPosts.findIndex(post => post.slug === currentSlug);
 // 前後の記事を取得
 const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
-// ↑↑↑ ここまで追加 ↑↑↑
 ---
 
-<html lang="en">
+<html lang="ja">
 	<head>
 		<BaseHead title={title} description={description} />
-<style>
-	main {
-		width: 100%;
-		max-width: 100%;
-		margin: 0;
-	}
-	.hero-image {
-		width: 100%;
-	}
-	.hero-image img {
-		display: block;
-		margin: 0 auto;
-		border-radius: 12px;
-		box-shadow: var(--box-shadow);
-	}
-	.prose {
-		width: 720px;
-		max-width: calc(100% - 2em);
-		margin: auto;
-		padding: 1em;
-		color: rgb(var(--gray-dark));
-	}
-	.title {
-		margin-bottom: 1em;
-		padding: 1em 0;
-		text-align: center;
-		line-height: 1;
-	}
+		<style>
+			main {
+				width: 100%;
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
 
-	/* =========================================
-		日本語向けサイズ調整 & 崩れ防止
-	   ========================================= */
+			/* =========================================
+				日本語向けサイズ調整 & 崩れ防止
+			   ========================================= */
 
-	.title h1 {
-		font-size: 2em !important;
-		line-height: 1.3 !important;
-		margin: 0 0 0.5em 0 !important;
-	}
+			.title h1 {
+				font-size: 2em !important;
+				line-height: 1.3 !important;
+				margin: 0 0 0.5em 0 !important;
+			}
 
-	.prose h2 {
-		font-size: 1.4em !important;
-		margin-top: 1.8em !important;
-		margin-bottom: 0.6em !important;
-		border-bottom: 2px solid var(--accent) !important;
-		color: var(--accent) !important;
-		padding-bottom: 0.2em;
-	}
+			.prose h2 {
+				font-size: 1.4em !important;
+				margin-top: 1.8em !important;
+				margin-bottom: 0.6em !important;
+				border-bottom: 2px solid var(--accent) !important;
+				color: var(--accent) !important;
+				padding-bottom: 0.2em;
+			}
 
-	.prose h3 {
-		font-size: 1.2em !important;
-		margin-top: 1.5em !important;
-		margin-bottom: 0.5em !important;
-		font-weight: 600;
-	}
+			.prose h3 {
+				font-size: 1.2em !important;
+				margin-top: 1.5em !important;
+				margin-bottom: 0.5em !important;
+				font-weight: 600;
+			}
 
-	.prose p {
-		font-size: 1rem !important;
-		line-height: 1.8 !important;
-		margin-bottom: 1.5em !important;
-	}
+			.prose p {
+				font-size: 1rem !important;
+				line-height: 1.8 !important;
+				margin-bottom: 1.5em !important;
+			}
 
-	/* コードブロックの崩れ防止（スマホで横スクロール可能に） */
-	.prose pre {
-		font-size: 0.85rem !important;
-		padding: 1rem !important;
-		overflow-x: auto !important;
-		white-space: pre !important; /* 勝手に改行させない */
-		word-wrap: normal !important;
-		border-radius: 8px;
-	}
-	
-	.prose code {
-		font-size: 0.85rem !important;
-	}
+			/* コードブロックの崩れ防止（スマホで横スクロール可能に） */
+			.prose pre {
+				font-size: 0.85rem !important;
+				padding: 1rem !important;
+				overflow-x: auto !important;
+				white-space: pre !important;
+				word-wrap: normal !important;
+				border-radius: 8px;
+			}
+			
+			.prose code {
+				font-size: 0.85rem !important;
+			}
 
-	/* 戻るボタンの割れ防止 */
-	.back-to-blog {
-		display: flex;
-		justify-content: center;
-		margin-top: 4rem;
-		padding: 0 1rem;
-	}
-	.back-btn {
-		display: inline-block;
-		padding: 0.8rem 2.5rem; /* 左右の余白を多めに */
-		border: 1px solid var(--accent);
-		color: var(--accent);
-		text-decoration: none;
-		border-radius: 50px;
-		font-size: 0.95rem;
-		transition: all 0.3s ease;
-		white-space: nowrap; /* 2行にさせない */
-		text-align: center;
-	}
-	.back-btn:hover {
-		background-color: var(--accent);
-		color: white;
-	}
+			/* 戻るボタンの割れ防止 */
+			.back-to-blog {
+				display: flex;
+				justify-content: center;
+				margin-top: 4rem;
+				padding: 0 1rem;
+			}
+			.back-btn {
+				display: inline-block;
+				padding: 0.8rem 2.5rem;
+				border: 1px solid var(--accent);
+				color: var(--accent);
+				text-decoration: none;
+				border-radius: 50px;
+				font-size: 0.95rem;
+				transition: all 0.3s ease;
+				white-space: nowrap;
+				text-align: center;
+			}
+			.back-btn:hover {
+				background-color: var(--accent);
+				color: white;
+			}
 
-	/* =========================================
-	   前後記事ナビゲーション
-	   ========================================= */
+			/* =========================================
+			   前後記事ナビゲーション
+			   ========================================= */
 
-	.post-navigation {
-		width: 720px;
-		max-width: calc(100% - 2em);
-		margin: 3rem auto 2rem;
-		padding: 2rem 0;
-		border-top: 1px solid #e5e7eb;
-		border-bottom: 1px solid #e5e7eb;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
-	}
+			.post-footer-navigation {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: 2rem auto 3rem;
+				padding: 0 1em;
+			}
 
-	.nav-link {
-		display: flex;
-		flex-direction: column;
-		padding: 1.5rem;
-		background: #f9fafb;
-		border: 1px solid #e5e7eb;
-		border-radius: 12px;
-		text-decoration: none;
-		color: inherit;
-		transition: all 0.2s ease;
-		min-height: 120px;
-	}
+			.footer-nav-link {
+				display: block;
+				padding: 1rem 1.25rem;
+				background: #f9fafb;
+				border: 1px solid #e5e7eb;
+				border-radius: 8px;
+				text-decoration: none;
+				color: inherit;
+				transition: all 0.2s ease;
+			}
 
-	.nav-link:hover {
-		background: #f3f4f6;
-		border-color: var(--accent);
-		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-	}
+			.footer-nav-link:hover {
+				background: var(--accent);
+				color: white;
+				border-color: var(--accent);
+			}
 
-	.nav-link.prev {
-		text-align: left;
-	}
+			.footer-nav-link:hover .footer-nav-label {
+				color: rgba(255, 255, 255, 0.9);
+			}
 
-	.nav-link.next {
-		text-align: right;
-	}
+			.footer-nav-link.prev {
+				text-align: left;
+			}
 
-	.nav-label {
-		font-size: 0.75rem;
-		color: #6b7280;
-		margin-bottom: 0.5rem;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
+			.footer-nav-link.next {
+				text-align: right;
+			}
 
-	.nav-title {
-		font-size: 1rem;
-		font-weight: 600;
-		color: rgb(var(--gray-dark));
-		line-height: 1.5;
-		margin-bottom: 0.5rem;
-		flex: 1;
-	}
+			.footer-nav-label {
+				display: block;
+				font-size: 0.7rem;
+				color: #9ca3af;
+				margin-bottom: 0.4rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
 
-	.nav-date {
-		font-size: 0.75rem;
-		color: #9ca3af;
-		margin-top: auto;
-	}
+			.footer-nav-title {
+				display: block;
+				font-size: 0.95rem;
+				font-weight: 600;
+				color: rgb(var(--gray-dark));
+				line-height: 1.4;
+			}
 
-	.nav-placeholder {
-		min-height: 120px;
-	}
+			.footer-nav-link:hover .footer-nav-title {
+				color: white;
+			}
 
-	/* スマホ専用の余白最適化 */
-	@media (max-width: 720px) {
-		.prose {
-			max-width: 95%; /* 左右の余白を削って文字を広く */
-			padding: 0.5rem;
-		}
-		.title h1 {
-			font-size: 1.6em !important;
-		}
-		/* コード内の文字が小さすぎないよう微調整 */
-		.prose pre {
-			font-size: 0.8rem !important;
-		}
-		
-		/* 前後記事ナビゲーション：スマホ対応 */
-		.post-navigation {
-			grid-template-columns: 1fr;
-			gap: 0.75rem;
-			margin: 2rem auto 1.5rem;
-			padding: 1.5rem 0;
-			max-width: 95%;
-		}
-		
-		.nav-link {
-			padding: 1.25rem;
-			min-height: 100px;
-		}
-		
-		.nav-title {
-			font-size: 0.9rem;
-		}
-		
-		.nav-placeholder {
-			display: none;
-		}
-	}
-</style>
+			/* スマホ専用の余白最適化 */
+			@media (max-width: 720px) {
+				.prose {
+					max-width: 95%;
+					padding: 0.5rem;
+				}
+				.title h1 {
+					font-size: 1.6em !important;
+				}
+				.prose pre {
+					font-size: 0.8rem !important;
+				}
+				
+				/* 前後記事ナビゲーション：スマホ対応 */
+				.post-footer-navigation {
+					grid-template-columns: 1fr;
+					gap: 0.75rem;
+					max-width: 95%;
+					margin: 1.5rem auto 2rem;
+				}
+				
+				.footer-nav-link {
+					padding: 1rem;
+				}
+				
+				.footer-nav-title {
+					font-size: 0.875rem;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
@@ -267,34 +252,24 @@ const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 					
 					<slot />
 
-					<!-- ↓↓↓ ここに前後記事ナビゲーションを追加 ↓↓↓ -->
-					<nav class="post-navigation">
-						{prevPost ? (
-							<a href={`/blog/${prevPost.slug}/`} class="nav-link prev">
-								<span class="nav-label">← 前の記事</span>
-								<span class="nav-title">{prevPost.data.title}</span>
-								<span class="nav-date">
-									<FormattedDate date={prevPost.data.pubDate} />
-								</span>
+					<!-- 前後記事ナビゲーション -->
+					<div class="post-footer-navigation">
+						{prevPost && (
+							<a href={`/blog/${prevPost.slug}/`} class="footer-nav-link prev">
+								<span class="footer-nav-label">← 前の記事</span>
+								<span class="footer-nav-title">{prevPost.data.title}</span>
 							</a>
-					) : (
-							<div class="nav-placeholder"></div>
-					)}
-	
-					{nextPost ? (
-						<a href={`/blog/${nextPost.slug}/`} class="nav-link next">
-							<span class="nav-label">次の記事 →</span>
-							<span class="nav-title">{nextPost.data.title}</span>
-							<span class="nav-date">
-								<FormattedDate date={nextPost.data.pubDate} />
-							</span>
-						</a>
-					) : (
-						<div class="nav-placeholder"></div>
-					)}
-				</nav>
-				<!-- ↑↑↑ ここまで追加 ↑↑↑ -->
+						)}
+						
+						{nextPost && (
+							<a href={`/blog/${nextPost.slug}/`} class="footer-nav-link next">
+								<span class="footer-nav-label">次の記事 →</span>
+								<span class="footer-nav-title">{nextPost.data.title}</span>
+							</a>
+						)}
+					</div>
 
+					<!-- CTAボックス -->
 					<div style="background-color: #f2f4f0; padding: 2rem 1.5rem; border-radius: 15px; margin: 4rem 0; text-align: center;">
 						<h3 style="margin-top: 0; color: var(--accent); font-size: 1.2rem;">Enjoying the Game Life?</h3>
 						<p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">
@@ -306,6 +281,7 @@ const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 						</a>
 					</div>
 
+					<!-- 記事一覧に戻る -->
 					<div class="back-to-blog">
 						<a href="/blog" class="back-btn">← 記事一覧に戻る</a>
 					</div>
