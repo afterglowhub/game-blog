@@ -4,7 +4,7 @@ description: "身内ノリや過度な挨拶に疲れた大人のための、新
 pubDate: "2026-02-05"
 category: "Web制作"
 tags: ["discord", "サーバー"]
-heroImage: 'hero-20260205.jpg'
+heroImage: "hero-20260205.jpg"
 ---
 
 **Afterglow Hub ― 大切な余暇（あいま）を楽しむ、大人のための中継地点（ハブ）**
