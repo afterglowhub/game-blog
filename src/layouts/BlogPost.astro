@@ -461,14 +461,17 @@ if (slug) {
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage ? (
-						<Image width={600} height={338} src={heroImage} alt="" />
-					) : (
-						<div style="height: 60px;"></div> 
-					)}
-				</div>
-
+			 <!-- Hero Image（記事詳細ページでは非表示） -->
+      		 <!-- 
+      		 <div class="hero-image">
+        	 {heroImage ? (
+          	 <Image width={600} height={338} src={heroImage} alt="" />
+        	 ) : (
+         	  <div style="height: 60px;"></div> 
+       		 )}
+     	    </div>
+			-->
+			
 				<div class="prose">
 					<div class="title">
 						<nav style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--gray);">
