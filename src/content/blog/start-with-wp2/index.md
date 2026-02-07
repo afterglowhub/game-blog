@@ -41,11 +41,14 @@ AIに依頼する際は、次のような文章を使ってください。
 見出し（H2, H3）を適切に使った構成にしてください。。
 
 ※これをコピーして、各固定ページの編集画面に貼り付けるだけでOKです。
+```
+
 ---
 
 ## ステップ6：【実用】実績表とSNSで「信頼」を可視化する
 
 ### 1.実績表（エクセル連携）の作り方
+
 手作業で表を作るのは大変ですが、エクセルが使えるなら一瞬です。
 1. **「TablePress」**というプラグインをインストールします。
 2. エクセルでまとめた実績（日付、内容、備考など）をCSV形式で保存し、アップロード。
@@ -97,10 +100,10 @@ Arkheはそのままでも美しいですが、「カスタマイズ」画面か
 ### もっとこだわりたい方へ（公式マニュアル集）
 設定に迷ったら、各テーマの「公式マニュアル」を覗いてみてください。これらはすべて、開発者が日本人のため、日本語の情報が非常に充実しています。
 
-[Cocoon公式マニュアル](https://wp-cocoon.com/manual/)
+- [Cocoon公式マニュアル](https://wp-cocoon.com/manual/)
 
-[Lightningクイックスタート](https://lightning.vektor-inc.co.jp/setting/quick-start/)
+- [Lightningクイックスタート](https://lightning.vektor-inc.co.jp/setting/quick-start/)
 
-[Arkheドキュメント](https://arkhe-theme.com/ja/manual/)
+- [Arkheドキュメント](https://arkhe-theme.com/ja/manual/)
 
 まずはこの愛着ある「1号機」を、名刺代わりに使い倒してみてください！
