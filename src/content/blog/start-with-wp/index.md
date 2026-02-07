@@ -3,7 +3,8 @@ title: "【最短15分】知識ゼロからWordPressの「初期画面」を表�
 description: "「会社のHPを作りたい」と思った初心者が、サーバー契約からWordPressの起動確認までを迷わず進めるためのガイドです。"
 pubDate: "2026-02-07"
 category: "Web制作"
-tags: ["WordPress", "初心者", "Cocoon", "サーバー"]
+tags: ["WordPress", "初心者", "レンタルサーバー"]
+heroImage: './hero-wp.jpg'
 ---
 
 「ホームページを作ってみたい」と思っても、多くの人が「何から手をつけていいか分からない」と立ち止まってしまいます。
