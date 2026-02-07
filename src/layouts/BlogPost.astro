@@ -18,7 +18,9 @@ let nextPost = null;
 
 if (slug) {
   // 全記事を取得して日付順に並べる
-  const allPosts = (await getCollection('blog'))
+  const allPosts = (await getCollection('blog', ({ data }) => {
+   return import.meta.env.PROD ? data.draft !== true : true;
+  }))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   // 現在の記事のslugを取得（propsから）
