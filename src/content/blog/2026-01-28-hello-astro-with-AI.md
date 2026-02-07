@@ -4,6 +4,7 @@ description: "「月額0円でサーバー代不要、セキュリティ最強�
 pubDate: "2026-01-28"
 category: "Web制作"
 tags: ["Cloudflare", "初心者", "AI", "Astro"]
+draft: true
 ---
 
 **会社のウェブサイト、毎月のサーバー代を払い続け、セキュリティ更新に怯えるのはもう終わりにしませんか？**
