@@ -1,9 +1,3 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-
 :root {
     /* 青から「セージグリーン・深緑」へ変更 */
     --accent: #556b2f;       /* オリーブドラブ（大人な深緑） */
@@ -195,4 +189,73 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* ======================
+   表のレスポンシブ対応
+   ====================== */
+
+/* 表を横スクロール可能にするラッパー */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+/* 表の基本スタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: white;
+}
+
+th {
+    background-color: rgba(85, 107, 47, 0.08); /* 薄い緑の背景 */
+    color: var(--accent-dark);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgb(var(--gray-light));
+    color: rgb(var(--gray-dark));
+}
+
+/* ゼブラストライプで読みやすく */
+tbody tr:nth-child(even) {
+    background-color: rgba(242, 244, 240, 0.5);
+}
+
+tbody tr:hover {
+    background-color: rgba(85, 107, 47, 0.05);
+}
+
+/* スマホ用の調整 */
+@media (max-width: 720px) {
+    table {
+        font-size: 0.8rem;
+        min-width: 600px; /* スクロールできるように最小幅を確保 */
+    }
+    
+    th, td {
+        padding: 0.5rem 0.4rem;
+        white-space: nowrap; /* テキストが折り返さないように */
+    }
+    
+    /* スクロールヒントを表示 */
+    .table-wrapper::after {
+        content: "← スクロールできます →";
+        display: block;
+        text-align: center;
+        font-size: 0.75rem;
+        color: rgb(var(--gray));
+        padding: 0.5rem;
+        background: rgba(85, 107, 47, 0.03);
+    }
 }
