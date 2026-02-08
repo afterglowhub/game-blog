@@ -113,6 +113,12 @@ const posts = (await getCollection('blog', ({ data }) => {
 							return (
 								<li>
 									<a href={`/blog/${post.id}/`}>
+
+										{/* デバッグ表示 */}
+										<div style="background: yellow; padding: 5px; margin: 5px;">
+											ID: {post.id || 'なし'}
+										</div>
+
 										{post.data.pinned && (
 											<span class="pinned-badge">📌</span>
 										)}
