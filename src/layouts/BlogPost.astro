@@ -345,42 +345,36 @@ if (slug) {
 		line-height: 1.5;
 	}
 
-	/* ========== 戻るボタン ========== */
+	/* ========== 戻るボタン（ふわっとシャドウ版） ========== */
 	.back-to-blog {
 		display: flex;
 		justify-content: center;
-		margin: 2.5rem 0 0 0;
-		padding: 0 1.5rem 5rem 1.5rem;  /* 下パディングを大きく */
-		overflow: visible !important;
-		height: auto !important;  /* 追加 */
+		margin: 2.5rem 0 3rem;
+		padding: 0 1.5rem;
 	}
-	
+
 	.back-btn {
 		display: inline-block;
-		padding: 0.875rem 2.25rem !important;  /* !important 追加 */
-		border: 2px solid var(--accent);
-		color: var(--accent);
+		padding: 1rem 2.5rem;
+		background-color: #fff;
+		color: #666;
 		text-decoration: none;
-		border-radius: 8px;
+		border-radius: 12px;
 		font-size: 0.9375rem;
-		font-weight: 600 !important;  /* !important 追加 */
+		font-weight: 600;
 		transition: all 0.3s ease;
 		white-space: nowrap;
 		text-align: center;
-		height: auto !important;  /* height を auto に強制 */
-		line-height: normal !important;  /* line-height も正常に */
-		box-sizing: border-box !important;
-		position: relative;
-		z-index: 10;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);  /* ふわっとした影 */
+		border: none;  /* 枠線なし */
 	}
 
 	.back-btn:hover {
-		background-color: var(--accent);
-		color: white;
-		transform: translateY(-2px);
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+		background-color: #f8f8f8;
+		color: #333;
+		transform: translateY(-3px);
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);  /* ホバーで影を強く */
 	}
-
 
 	/* ========== スマホ最適化 ========== */
 	@media (max-width: 640px) {
