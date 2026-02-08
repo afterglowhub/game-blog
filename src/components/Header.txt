@@ -1,0 +1,180 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header>
+	<nav>
+		<h2 class="site-title"><a href="/">{SITE_TITLE}</a></h2>
+		
+		<button id="menu-toggle" aria-label="Menu">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<line x1="3" y1="12" x2="21" y2="12"></line>
+				<line x1="3" y1="6" x2="21" y2="6"></line>
+				<line x1="3" y1="18" x2="21" y2="18"></line>
+			</svg>
+		</button>
+
+		<div class="internal-links">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+		</div>
+
+		<div class="social-links"></div>
+	</nav>
+</header>
+
+<script>
+	// スマホメニューの開閉スクリプト
+	const btn = document.getElementById('menu-toggle');
+	const links = document.querySelector('.internal-links');
+	btn?.addEventListener('click', () => links?.classList.toggle('show'));
+</script>
+
+<style>
+	/* ============================================
+	   黒白タブデザイン（デスクトップ）
+	   ============================================ */
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background-color: #000;
+		border-bottom: 2px solid #333;
+		margin: 0;
+		padding: 0;
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		max-width: 1200px;
+		margin: 0 auto;
+		height: auto;
+		padding: 0;
+	}
+
+	.site-title {
+		background-color: #fff;
+		color: #000;
+		margin: 0;
+		padding: 0;
+		border-right: 2px solid #333;
+	}
+
+	.site-title a {
+		display: block;
+		padding: 1rem 2rem;
+		color: #000;
+		text-decoration: none;
+		font-size: 1.1rem;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.internal-links {
+		display: flex;
+		gap: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	.internal-links :global(a) {
+		padding: 1rem 2rem;
+		color: #fff;
+		text-decoration: none;
+		background-color: #000;
+		border-right: 1px solid #444;
+		transition: all 0.3s ease;
+		font-weight: 500;
+		display: block;
+	}
+
+	.internal-links :global(a:hover),
+	.internal-links :global(a.active),
+	.internal-links :global(a[aria-current="page"]) {
+		background-color: #fff;
+		color: #000;
+	}
+
+	#menu-toggle {
+		display: none;
+	}
+
+	.social-links {
+		margin-left: auto;
+		padding-right: 1rem;
+	}
+
+	/* ============================================
+	   スマホ対応
+	   ============================================ */
+	@media (max-width: 720px) {
+		header {
+			background-color: #000;
+		}
+
+		nav {
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 0;
+			height: auto;
+		}
+
+		.site-title {
+			border-right: none;
+			border-bottom: 2px solid #333;
+			flex: 1;
+		}
+
+		.site-title a {
+			padding: 1rem;
+			font-size: 0.95rem;
+			text-align: left;
+		}
+
+		#menu-toggle {
+			display: block;
+			background: none;
+			border: none;
+			color: #fff;
+			padding: 1rem;
+			cursor: pointer;
+			order: 2;
+		}
+
+		.internal-links {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			background: #000;
+			flex-direction: column;
+			padding: 0;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			z-index: 99;
+			border-top: 1px solid #333;
+		}
+
+		.internal-links.show {
+			display: flex;
+		}
+
+		.internal-links :global(a) {
+			padding: 1rem;
+			border-right: none;
+			border-bottom: 1px solid #333;
+			text-align: center;
+		}
+
+		.internal-links :global(a:last-child) {
+			border-bottom: none;
+		}
+
+		.social-links {
+			display: none;
+		}
+	}
+</style>

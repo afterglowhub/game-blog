@@ -1,13 +1,13 @@
 :root {
-    /* 青から「セージグリーン・深緑」へ変更 */
-    --accent: #556b2f;       /* オリーブドラブ（大人な深緑） */
-    --accent-dark: #3e4e22;  /* さらに深い緑 */
-    --black: 40, 44, 40;     /* 真っ黒を避けた墨色 */
-    --gray: 140, 146, 135;   /* 少し緑がかったグレー */
-    --gray-light: 242, 244, 240; /* 柔らかいオフホワイト */
-    --gray-dark: 60, 65, 58;
-    --gray-gradient: #ffffff, #fcfdfc; /* グラデーションをほぼ白に */
-    --box-shadow: 0 4px 12px rgba(85, 107, 47, 0.08); /* 影に少しだけ緑のニュアンス */
+    /* 白黒グレーのモノトーンカラー */
+    --accent: #2c2c2c;           /* ダークグレー（アクセント） */
+    --accent-dark: #1a1a1a;      /* より深い黒に近いグレー */
+    --black: 40, 40, 40;         /* 柔らかい黒 */
+    --gray: 128, 128, 128;       /* ミディアムグレー */
+    --gray-light: 245, 245, 245; /* ライトグレー */
+    --gray-dark: 60, 60, 60;     /* ダークグレー */
+    --gray-gradient: #ffffff, #f8f8f8; /* 白からほぼ白へ */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 柔らかい影 */
 }
 @font-face {
 	font-family: "Atkinson";
@@ -259,3 +259,33 @@ tbody tr:hover {
         background: rgba(85, 107, 47, 0.03);
     }
 }
+        /* ============================================
+            ページ全体の構造調整
+        ============================================ */
+
+        body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        }
+
+        main {
+        flex: 1;
+        padding-bottom: 4rem;
+        }
+
+        footer {
+        margin-top: auto;
+        padding: 2rem 0;
+        background-color: #f5f5f5;
+        border-top: 1px solid #e0e0e0;
+        }
+
+        /* 記事一覧に戻るボタン周辺 */
+        .back-to-list-btn,
+        main > p:last-child a,
+main > div:last-child a {
+        display: inline-block;
+        margin-bottom: 2rem;
+        }
