@@ -349,14 +349,14 @@ if (slug) {
 	.back-to-blog {
 		display: flex;
 		justify-content: center;
-		margin: 2.5rem 0 3rem;
-		padding: 0 1.5rem;
+		margin: 2.5rem 0 0 0;  /* 下マージンを削除 */
+		padding: 0 1.5rem 4rem 1.5rem;  /* 下パディングを追加 */
 	}
 	
 	.back-btn {
 		display: inline-block;
 		padding: 0.875rem 2.25rem;
-		border: 1px solid var(--accent);
+		border: 2px solid var(--accent);  /* 1px → 2px に */
 		color: var(--accent);
 		text-decoration: none;
 		border-radius: 8px;
@@ -365,13 +365,15 @@ if (slug) {
 		transition: all 0.3s ease;
 		white-space: nowrap;
 		text-align: center;
+		position: relative;  /* 追加 */
+		z-index: 10;  /* 追加 */
 	}
 	
 	.back-btn:hover {
 		background-color: var(--accent);
 		color: white;
-		transform: translateY(-1px);
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		transform: translateY(-2px);  /* -1px → -2px に */
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);  /* 影を強く */
 	}
 
 	/* ========== スマホ最適化 ========== */
