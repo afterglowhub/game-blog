@@ -272,7 +272,6 @@ tbody tr:hover {
 
         main {
         flex: 1;
-        padding-bottom: 4rem;
         }
 
         footer {
@@ -285,7 +284,12 @@ tbody tr:hover {
         /* 記事一覧に戻るボタン周辺 */
         .back-to-list-btn,
         main > p:last-child a,
-main > div:last-child a {
+        main > div:last-child a {
         display: inline-block;
         margin-bottom: 2rem;
+        }
+
+        /* ボタンの下が切れないように、わずかな余白だけ */
+        main > p:last-of-type {
+        padding-bottom: 0.5rem;  /* 最小限 */
         }
