@@ -9,9 +9,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog', ({ data }) => {
 	return import.meta.env.PROD ? data.draft !== true : true;
-})).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+}))
+	.sort((a, b) => {
+		// ピン留め記事を最優先
+		if (a.data.pinned && !b.data.pinned) return -1;
+		if (!a.data.pinned && b.data.pinned) return 1;
+		
+		// それ以外は日付順（新しい順）
+		return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+	});
 ---
 
 <!doctype html>
@@ -106,7 +112,10 @@ const posts = (await getCollection('blog', ({ data }) => {
 
 							return (
 								<li>
-									<a href={`/blog/${post.id}/`}>
+									<a href={`/blog/${post.slug}/`}>
+										{post.data.pinned && (
+											<span class="pinned-badge">📌 重要</span>
+										)}
 										{post.data.heroImage ? (
 											<Image 
 												src={post.data.heroImage}

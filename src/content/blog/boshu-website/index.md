@@ -2,6 +2,7 @@
 title: "スプラ3・フォトナを「カフェのカウンター」で楽しむように。大人が一期一会で遊べる場所を作りました"
 description: "身内ノリや過度な挨拶に疲れた大人のための、新しいゲーム募集の形を提案します。"
 pubDate: "2026-02-05"
+pinned: true
 category: "Web制作"
 tags: ["discord", "サーバー"]
 heroImage: './hero-lounge.jpg'
