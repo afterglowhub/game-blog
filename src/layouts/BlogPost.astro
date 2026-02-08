@@ -349,35 +349,36 @@ if (slug) {
 	.back-to-blog {
 		display: flex;
 		justify-content: center;
-		margin: 2.5rem 0 0 0;  /* 下マージンなし */
-		padding: 0 1.5rem 0 1.5rem;  /* 下パディングもなし */
-		transform: translateY(-20px);  /* 上に20px移動 */
+		margin: 2.5rem 0 0 0;
+		padding: 0 1.5rem 5rem 1.5rem;  /* 下パディングを大きく */
+		overflow: visible !important;
+		height: auto !important;  /* 追加 */
 	}
 	
 	.back-btn {
-	display: inline-block;
-	padding: 0.875rem 2.25rem !important;  /* !important 追加 */
-	border: 2px solid var(--accent);
-	color: var(--accent);
-	text-decoration: none;
-	border-radius: 8px;
-	font-size: 0.9375rem;
-	font-weight: 600 !important;  /* !important 追加 */
-	transition: all 0.3s ease;
-	white-space: nowrap;
-	text-align: center;
-	height: auto !important;  /* height を auto に強制 */
-	line-height: normal !important;  /* line-height も正常に */
-	box-sizing: border-box !important;
-	position: relative;
-	z-index: 10;
+		display: inline-block;
+		padding: 0.875rem 2.25rem !important;  /* !important 追加 */
+		border: 2px solid var(--accent);
+		color: var(--accent);
+		text-decoration: none;
+		border-radius: 8px;
+		font-size: 0.9375rem;
+		font-weight: 600 !important;  /* !important 追加 */
+		transition: all 0.3s ease;
+		white-space: nowrap;
+		text-align: center;
+		height: auto !important;  /* height を auto に強制 */
+		line-height: normal !important;  /* line-height も正常に */
+		box-sizing: border-box !important;
+		position: relative;
+		z-index: 10;
 	}
 
 	.back-btn:hover {
-	background-color: var(--accent);
-	color: white;
-	transform: translateY(-2px);
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+		background-color: var(--accent);
+		color: white;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 	}
 
 

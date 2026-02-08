@@ -310,3 +310,12 @@ tbody tr:hover {
         main > p:last-of-type {
         padding-bottom: 0.5rem;  /* 最小限 */
         }
+
+        /* back-btn の高さ制限を解除 */
+        a.back-btn,
+        .back-btn {
+	    height: auto !important;
+	    min-height: auto !important;
+	    max-height: none !important;
+	    overflow: visible !important;
+        }
