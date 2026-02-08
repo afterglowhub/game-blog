@@ -114,7 +114,7 @@ const posts = (await getCollection('blog', ({ data }) => {
 								<li>
 									<a href={`/blog/${post.slug}/`}>
 										{post.data.pinned && (
-											<span class="pinned-badge">📌 重要</span>
+											<span class="pinned-badge">📌</span>
 										)}
 										{post.data.heroImage ? (
 											<Image 
