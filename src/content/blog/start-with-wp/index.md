@@ -46,11 +46,14 @@ heroImage: './hero-wp.jpg'
 
 補足：最新の料金やキャンペーン情報は各公式サイトで最終確認を行ってください。
 
-> **ミニコラム：ドメインは「.com」を“料金が明快なところ”で取っておくのが安心**  
-> ドメインは一度決めると、名刺やSNSにも残る「ネット上の住所」です。サーバーは後で替えられても、**URLは変えない方が安心**。だから初心者ほど、**更新料金が読みやすい所**で管理するのがおすすめ。  
-> Cloudflare Registrar は「登録・更新はレジストリ料金のみ（上乗せなし）」を明記しています。国内なら“明朗会計寄り”として、**追加費用なし**を明言しているラッコドメイン、次いで価格表が見やすいムームー／バリューあたりが候補です。  
-> ※迷ったら、まずは定番の **.com** を1つでOK。  
-> [Source](https://www.cloudflare.com/ja-jp/products/registrar/) [Source](https://rakkodomain.com/knowledge/1049/) [Source](https://muumuu-domain.com/domain/price) [Source](https://www.value-domain.com/domain/price/)
+---
+
+**ミニコラム：ドメインは「.com」を“料金が明快なところ”で取っておくのが安心**
+
+ドメインは一度決めると、名刺やSNSにも残る「ネット上の住所」です。サーバーは後で替えられても、**URLは変えない方が安心**。だから初心者ほど、**更新料金が読みやすい所**で管理するのがおすすめ。  
+Cloudflare Registrar は「登録・更新はレジストリ料金のみ（上乗せなし）」を明記しています。国内なら“明朗会計寄り”として、**追加費用なし**を明言しているラッコドメイン、次いで価格表が見やすいムームー／バリューあたりが候補です。  
+※迷ったら、まずは定番の **.com** を1つでOK。  
+[Source](https://www.cloudflare.com/ja-jp/products/registrar/) [Source](https://rakkodomain.com/knowledge/1049/) [Source](https://muumuu-domain.com/domain/price) [Source](https://www.value-domain.com/domain/price/)
 
 ---
 
