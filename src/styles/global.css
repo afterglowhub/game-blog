@@ -191,6 +191,23 @@ hr {
 	white-space: nowrap;
 }
 
+/* ========== ここから追加 ========== */
+
+/* ボタンやメインコンテンツには overflow を適用しない */
+main,
+main > *,
+.back-to-list-btn,
+main > p:last-child,
+main > div:last-child,
+main > p:last-child a,
+main > div:last-child a {
+	overflow: visible !important;
+	clip: none !important;
+	clip-path: none !important;
+	height: auto !important;
+	width: auto !important;
+}
+
 /* ======================
    表のレスポンシブ対応
    ====================== */
