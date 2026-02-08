@@ -54,11 +54,7 @@ heroImage: './hero-wp.jpg'
 Cloudflare Registrar は「登録・更新はレジストリ料金のみ（上乗せなし）」を明記しています。国内なら“明朗会計寄り”として、**追加費用なし**を明言しているラッコドメイン、次いで価格表が見やすいムームー／バリューあたりが候補です。  
 ※迷ったら、まずは定番の **.com** を1つでOK。  
 
-**参考リンク：**
-- [Cloudflare Registrar - ドメイン登録](https://www.cloudflare.com/ja-jp/products/registrar/)
-- [Rakko Domain - ドメイン知識](https://rakkodomain.com/knowledge/1049/)
-- [ムームードメイン - 料金表](https://muumuu-domain.com/domain/price)
-- [バリュードメイン - 料金表](https://www.value-domain.com/domain/price/)
+**参考リンク：** [¹ Cloudflare](https://www.cloudflare.com/ja-jp/products/registrar/) [² Rakko](https://rakkodomain.com/knowledge/1049/) [³ ムームー](https://muumuu-domain.com/domain/price) [⁴ バリュー](https://www.value-domain.com/domain/price/)
 
 ---
 
