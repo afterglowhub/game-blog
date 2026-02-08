@@ -7,7 +7,7 @@ export async function getStaticPaths() {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 	return posts.map((post) => ({
-		params: { slug: post.slug },  // ← post.slugに変更
+		params: { slug: post.id },  {/* slugをidに変更 */}
 		props: post,
 	}));
 }
@@ -17,6 +17,6 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data} slug={post.slug}>  {/* ← post.slugに変更 */}
+<BlogPost {...post.data} slug={post.id}>  {/* slugをidに変更 */}
 	<Content />
 </BlogPost>
