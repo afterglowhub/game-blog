@@ -1,5 +1,5 @@
 ---
-title: "【最短15分】知識ゼロからWordPressの「初期画面」を表示させる全手順"
+title: "【WP①契約編】知識ゼロからWordPressの「初期画面」を表示させる全手順"
 description: "「会社のHPを作りたい」と思った初心者が、サーバー契約からWordPressの起動確認までを迷わず進めるためのガイドです。"
 pubDate: "2026-02-06"
 category: "Web制作"
