@@ -2,9 +2,7 @@
 title: "スマホでブログを書きたい！Astroエディタをつくってみた"
 description: "Astroのフロントマター入力が面倒だったので、VPSに専用エディタを構築しました。"
 pubDate: "2026-02-10"
-category: ""
 tags: ["Astro", "Docker", "Nginx"]
-heroImage: "./hero-.jpg"
 ---
 
 ### なぜつくったのか
