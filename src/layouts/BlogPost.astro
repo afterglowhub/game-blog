@@ -8,9 +8,10 @@ import Header from '../components/Header.astro';
 import { getCollection } from 'astro:content';
 
 type Props = CollectionEntry<'blog'>['data'] & {
-  slug?: string;  // ← ? を追加してオプショナルに
+  slug?: string;
+  Content?: any;  // ← 追加
 };
-const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, slug, Content } = Astro.props;  // ← Content を追加
 
 // slugがある場合のみ前後記事を取得
 let prevPost = null;
@@ -514,7 +515,7 @@ if (slug) {
 						<hr />
 					</div>
 					
-					<slot />
+					{Content && <Content />}
 
 <!-- 前後記事ナビゲーション：ブログ記事の場合のみ表示 -->
 {slug && (prevPost || nextPost) && (
