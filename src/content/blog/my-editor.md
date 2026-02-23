@@ -16,7 +16,7 @@ Astroでブログを書く際、設定(フロントマター)を毎回手入力�
 ### 構築のポイント
 今回はconohaVPS上でDockerを使用して環境をつくりました。
 1. **Nginxでのリバースプロキシ設定**
-   `editor.afterglowhub.com`というサブドメインを割り当て<br>
+   `editor.game30.net`というサブドメインを割り当て<br>
 `etc/nginx/sites-available/`設定に苦戦
 2. **スマホ特化のボタン配置**
 よく使うマークダウン記号をボタンで挿入できるようにしました。
